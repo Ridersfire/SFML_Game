@@ -1,13 +1,9 @@
 #include <SFML/Graphics.hpp>
-
+#include "PlayerChar.h"
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
-	sf::Sprite charSprite;
-	sf::Texture charTexture;
-	charTexture.loadFromFile("Sprites\\Char1.png");
-	charSprite.setTexture(charTexture);
-	sf::Sprite platform1;
+	PlayerChar playah(1);
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -18,16 +14,10 @@ int main()
 		}
 
 		window.clear();
-		window.draw(charSprite);
+		window.draw(playah.getSprite());
 		window.display();
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-		{
-			charSprite.move(.1, 0);
-		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		{
-			charSprite.move(-.1, 0);
-		}
+		playah.move();
+
 	}
 
 	return 0;
