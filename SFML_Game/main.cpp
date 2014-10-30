@@ -2,10 +2,12 @@
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
-
+	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
+	sf::Sprite charSprite;
+	sf::Texture charTexture;
+	charTexture.loadFromFile("Sprites\\Char1.png");
+	charSprite.setTexture(charTexture);
+	sf::Sprite platform1;
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -16,8 +18,16 @@ int main()
 		}
 
 		window.clear();
-		window.draw(shape);
+		window.draw(charSprite);
 		window.display();
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		{
+			charSprite.move(.1, 0);
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		{
+			charSprite.move(-.1, 0);
+		}
 	}
 
 	return 0;
