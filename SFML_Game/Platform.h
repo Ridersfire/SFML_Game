@@ -1,0 +1,23 @@
+#pragma once
+#include <SFML/Graphics.hpp>
+
+class Platform
+{
+public:
+	Platform();
+	Platform(int xLocation, int yLocation);
+	~Platform();
+	sf::RectangleShape getShape();
+	float getY();
+	float getX();
+private:
+	float xPos;
+	float yPos;
+	int width;
+	int height;
+	sf::Vector2f rectSize;
+	sf::RectangleShape platSquare;
+	sf::Texture platTexture;
+
+};
+

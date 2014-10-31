@@ -85,9 +85,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Platform.cpp" />
     <ClCompile Include="PlayerChar.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Platform.h" />
     <ClInclude Include="PlayerChar.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
