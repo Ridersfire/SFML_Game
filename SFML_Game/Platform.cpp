@@ -41,3 +41,7 @@ float Platform::getX()
 {
 	return xPos;
 }
+int Platform::getWidth()
+{
+	return width;
+}

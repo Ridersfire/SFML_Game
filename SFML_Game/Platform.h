@@ -10,6 +10,7 @@ public:
 	sf::RectangleShape getShape();
 	float getY();
 	float getX();
+	int getWidth();
 private:
 	float xPos;
 	float yPos;

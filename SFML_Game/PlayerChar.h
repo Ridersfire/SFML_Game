@@ -19,6 +19,10 @@ private:
 	bool falling = true;
 	sf::Sprite charSprite;
 	sf::Texture charTexture;
+	const int TOPLEFT = 0;
+	const int TOPRIGHT = 1;
+	const int BOTTOMRIGHT = 2;
+	const int BOTTOMLEFT = 3;
 	
 };
 
