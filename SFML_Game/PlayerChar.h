@@ -7,6 +7,7 @@ class PlayerChar
 public:
 	PlayerChar(int charType);
 	~PlayerChar();
+	void update(std::vector <Platform>);
 	void move();
 	void fall(std::vector <Platform>);
 	sf::Sprite getSprite();
@@ -16,13 +17,22 @@ private:
 	int yLen = 32;
 	int xLen = 16;
 	double vSpeed = 0;
+	double fallSpeed = .5;
+	float jumpSpeed = 20;
 	bool falling = true;
 	sf::Sprite charSprite;
 	sf::Texture charTexture;
+	/**
 	const int TOPLEFT = 0;
 	const int TOPRIGHT = 1;
 	const int BOTTOMRIGHT = 2;
 	const int BOTTOMLEFT = 3;
+	*/
+	sf::Keyboard::Key KEY_MOVERIGHT = sf::Keyboard::D;
+	sf::Keyboard::Key KEY_MOVELEFT = sf::Keyboard::A;
+	sf::Keyboard::Key KEY_JUMP = sf::Keyboard::Space;
+	
+
 	
 };
 

@@ -6,6 +6,7 @@ class Platform
 public:
 	Platform();
 	Platform(int xLocation, int yLocation);
+	Platform(int xLocation, int yLocation, int xLen, int yLen);
 	~Platform();
 	sf::RectangleShape getShape();
 	float getY();
@@ -19,6 +20,7 @@ private:
 	sf::Vector2f rectSize;
 	sf::RectangleShape platSquare;
 	sf::Texture platTexture;
+
 
 };
 

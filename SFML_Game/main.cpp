@@ -1,21 +1,30 @@
 #include <SFML/Graphics.hpp>
 #include "PlayerChar.h"
 #include "Platform.h"
+#include "Level.h"
 #include <vector>
+#include <iostream>
 
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
-	PlayerChar playah(1);
+	PlayerChar playah(6);
 	std::vector < Platform > platforms;
+	sf::Image testImage;
+	testImage.loadFromFile("Levels\\level1.png");
+
+	Level testLevel(testImage);
+
 	/**
 	Platform platforms[2];
 	platforms[0] = Platform(0,300);
 	platforms[1] = Platform(400, 400);
 	*/
-	platforms.push_back(Platform(0, 300));
-	platforms.push_back(Platform(400, 400));
-
+	platforms = testLevel.platforms;
+	
+	sf::Clock clock;
+	float lastTime = 0;
+	window.setFramerateLimit(10);
 	while (window.isOpen())
 	{
 		sf::Event event;
@@ -31,10 +40,13 @@ int main()
 		{
 			window.draw(plat.getShape());
 		}
-		playah.fall(platforms);
-		playah.move();
+		playah.update(platforms);	
 		window.draw(playah.getSprite());
 		window.display();
+		float currentTime = clock.restart().asSeconds();
+		float fps = 1.f / (currentTime);
+		lastTime = currentTime;
+		std::cout << fps << std::endl;
 		
 
 	}
