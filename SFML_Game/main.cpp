@@ -24,7 +24,7 @@ int main()
 	
 	sf::Clock clock;
 	float lastTime = 0;
-	window.setFramerateLimit(10);
+	window.setFramerateLimit(20);
 	while (window.isOpen())
 	{
 		sf::Event event;

@@ -8,7 +8,7 @@ public:
 	PlayerChar(int charType);
 	~PlayerChar();
 	void update(std::vector <Platform>);
-	void move();
+	void getMovement();
 	void fall(std::vector <Platform>);
 	sf::Sprite getSprite();
 private:
@@ -17,6 +17,7 @@ private:
 	int yLen = 32;
 	int xLen = 16;
 	double vSpeed = 0;
+	double hSpeed = 0;
 	double fallSpeed = .5;
 	float jumpSpeed = 20;
 	bool falling = true;
