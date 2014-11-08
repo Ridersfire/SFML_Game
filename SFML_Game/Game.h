@@ -3,6 +3,7 @@
 #include "Screen.h"
 #include "LevelScreen.h"
 #include "StartScreen.h"
+#include "OptionScreen.h"
 #include "PlayerChar.h"
 
 class Level;
@@ -13,13 +14,13 @@ class Game
 public:
 	Game();
 	int currentLevel;
-	std::vector < Screen > screens;
 	PlayerChar player_1;
 	//moved addlevel to levelScreen
 	void renderGame();
 	void run();
 	~Game();
 	sf::RenderWindow window_;
+
 private:
 
 	void handleInput();	
@@ -29,6 +30,9 @@ private:
 	bool isGameRunning = true;
 	bool onStartScreen = true;
 	bool gotoOptionScreen = false;
+	StartScreen startScreen;
+	LevelScreen levelScreen;
+	OptionScreen optionScreen;
 	
 };
 

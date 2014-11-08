@@ -4,14 +4,11 @@
 #include "StartScreen.h"
 #include "OptionScreen.h"
 
-Game::Game() 
-	: window_(sf::VideoMode(800, 600), "GAME")
+Game::Game()
+	: window_(sf::VideoMode(800, 600), "GAME"),
+	startScreen(), levelScreen(), optionScreen()
 {
 	player_1 = PlayerChar(1);
-	
-	screens.push_back(StartScreen());
-	screens.push_back(LevelScreen());
-	screens.push_back(OptionScreen());
 }
 /**
 	This function is the heart of the program,
@@ -25,11 +22,19 @@ void Game::run()
 
 	while (isGameRunning)
 	{
-		while (onStartScreen)
+		window_.clear();
+		sf::Event event;
+		window_.setFramerateLimit(60);
+		while (window_.pollEvent(event))
 		{
-			screens[STARTSCREEN].render(window_);
-			screens[STARTSCREEN].handleInput();
+			if (event.type == sf::Event::Closed)
+				window_.close();
+		}
+		if (onStartScreen)
+		{
+			startScreen.render(window_);
 			//show start screen
+			
 			/**
 			display start screen
 
@@ -40,17 +45,17 @@ void Game::run()
 			set onStartScreen = false
 			set gotoOptionScreen = true
 			*/
-
-			
 		}
-		while (!onStartScreen && !gotoOptionScreen)
+		else if (!gotoOptionScreen)
 		{
 			//render the game levels
 		}
-		while (!onStartScreen && gotoOptionScreen)
+		else
 		{
 			//render options menu
 		}
+		window_.display();
+
 	}
 }
 

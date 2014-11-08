@@ -5,7 +5,6 @@ Screen::Screen()
 {
 }
 
-
 Screen::~Screen()
 {
 }

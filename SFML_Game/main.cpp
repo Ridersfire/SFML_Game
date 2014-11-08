@@ -14,27 +14,15 @@ int main()
 	So all that is below should be sent to the game function or something
 
 	*/
-	/**
+	
 	Game game;
 	game.run();
-	*/
-	//sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
-	// added 
-	PlayerChar playah(1);
-	sf::Image testImage;
-	testImage.loadFromFile("Levels\\level1.png");
-
-	Level testLevel(testImage);
-
-	/**
-	Platform platforms[2];
-	platforms[0] = Platform(0,300);
-	platforms[1] = Platform(400, 400);
-	*/
 	
+	//sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
+	// added
+
 	sf::Clock clock;
 	float lastTime = 0;
-	//window.setFramerateLimit(20);
 	/**
 	window.setFramerateLimit(60);
 	while (window.isOpen())

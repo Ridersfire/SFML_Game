@@ -7,8 +7,8 @@ public:
 	sf::RectangleShape background;
 	sf::Texture backgroundImage;
 	~Screen();
-	virtual void render(sf::RenderWindow & window);
-	virtual void handleInput();
+	virtual void render(sf::RenderWindow & window) = 0;
+	virtual void handleInput() = 0;
 
 };
 

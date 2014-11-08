@@ -14,7 +14,7 @@ StartScreen::StartScreen()
 	buttons.push_back(start_button);
 	buttons.push_back(options_button);
 	buttons.push_back(exit_button);
-	backgroundImage.loadFromFile("startscreen\StartScreen.png");
+	backgroundImage.loadFromFile("startscreen\\StartScreen.png");
 	background.setTexture(&backgroundImage);
 	background.setSize(sf::Vector2f(800, 600));
 	background.setPosition(sf::Vector2f(0, 0));
@@ -24,10 +24,15 @@ StartScreen::StartScreen()
 
 void StartScreen::render(sf::RenderWindow & window)
 {
-	//window.draw(background);
+	window.draw(background);
 
 }
 
 StartScreen::~StartScreen()
 {
+}
+
+void StartScreen::handleInput()
+{
+	//Input Handling
 }

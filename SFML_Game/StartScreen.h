@@ -9,6 +9,8 @@ public:
 	StartScreen();
 	~StartScreen();
 	void render(sf::RenderWindow & window);
+	void handleInput();
+
 	std::vector <sf::RectangleShape> buttons;
 };
 

@@ -20,3 +20,12 @@ void LevelScreen::addLevel()
 	roomList.push_back(Level(LevelLayout));
 	*/
 }
+void LevelScreen::render(sf::RenderWindow & window)
+{
+	//Rendering process
+}
+
+void LevelScreen::handleInput()
+{
+	//Input Handling
+}
