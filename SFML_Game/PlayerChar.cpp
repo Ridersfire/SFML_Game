@@ -2,6 +2,12 @@
 #include "Platform.h"
 #include <iostream>
 
+PlayerChar::PlayerChar()
+{
+	charTexture.loadFromFile("Sprites//Green_Char.png");
+	charSprite.setTexture(charTexture);
+}
+
 PlayerChar::PlayerChar(int charType)
 {
 	if (charType == 1)
@@ -25,6 +31,7 @@ void PlayerChar::update(std::vector <Platform> platforms)
 	fall(platforms);
 	yPos += vSpeed;
 	xPos += hSpeed;
+	std::cout << falling << std::endl;
 	charSprite.setPosition(xPos, yPos);
 }
 
@@ -46,8 +53,11 @@ void PlayerChar::getMovement()
 	{
 		//Insert Skill here
 	}
-	if (sf::Keyboard::isKeyPressed(KEY_JUMP) && !falling) vSpeed = -jumpSpeed;
-	
+	if (sf::Keyboard::isKeyPressed(KEY_JUMP) && !falling)
+	{
+		std::cout << "Jump" << std::endl;
+		vSpeed = -jumpSpeed;
+	}
 }
 
 void PlayerChar::fall(std::vector <Platform> platforms)
@@ -88,6 +98,11 @@ void PlayerChar::fall(std::vector <Platform> platforms)
 				yPos = plat_yLoc - yLen;
 				falling = false;
 			}
+		}
+		else if ((yPos > plat_yLoc + plat_yLen && yPos + vSpeed < plat_yLoc + plat_yLen))
+		{
+			vSpeed = 0;
+			//yPos = plat_yLoc + plat_yLen;
 		}
 		//xPos + hSpeed < plat_xLoc + plat_xLen && xPos > plat_xLoc + plat_xLen && yPos + yLen <= plat_yLen + plat_yLoc && yPos + yLen > plat_yLoc
 		// xPos is where the left side of the character is

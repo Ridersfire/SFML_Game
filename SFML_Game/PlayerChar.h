@@ -5,6 +5,7 @@ class Platform;
 class PlayerChar
 {
 public:
+	PlayerChar();
 	PlayerChar(int charType);
 	~PlayerChar();
 	void update(std::vector <Platform>);

@@ -84,15 +84,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Level.cpp" />
+    <ClCompile Include="LevelScreen.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OptionScreen.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="PlayerChar.cpp" />
+    <ClCompile Include="Screen.cpp" />
+    <ClCompile Include="StartScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Level.h" />
+    <ClInclude Include="LevelScreen.h" />
+    <ClInclude Include="OptionScreen.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="PlayerChar.h" />
+    <ClInclude Include="Screen.h" />
+    <ClInclude Include="StartScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

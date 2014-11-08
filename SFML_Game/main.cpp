@@ -7,8 +7,16 @@
 
 int main()
 {
+	/**
+	This is what I want to replace all of the below with,
+	Game game;
+	game.run();
+	So all that is below should be sent to the game function or something
+	*/
+
 	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
-	PlayerChar playah(6);
+	// added 
+	PlayerChar playah(1);
 	std::vector < Platform > platforms;
 	sf::Image testImage;
 	testImage.loadFromFile("Levels\\level1.png");
@@ -24,7 +32,8 @@ int main()
 	
 	sf::Clock clock;
 	float lastTime = 0;
-	window.setFramerateLimit(20);
+	//window.setFramerateLimit(20);
+	window.setFramerateLimit(60);
 	while (window.isOpen())
 	{
 		sf::Event event;
