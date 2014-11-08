@@ -15,13 +15,13 @@ public:
 	int currentLevel;
 	std::vector < Screen > screens;
 	PlayerChar player_1;
-	//not sure if addlevel is needed here
-	void addLevel(sf::Image);
+	//moved addlevel to levelScreen
 	void renderGame();
 	void run();
 	~Game();
+	sf::RenderWindow window_;
 private:
-	//sf::RenderWindow window_;
+
 	void handleInput();	
 	const int STARTSCREEN = 0;
 	const int GAMESCREEN = 1;

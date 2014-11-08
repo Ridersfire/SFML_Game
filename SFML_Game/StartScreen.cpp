@@ -21,13 +21,13 @@ StartScreen::StartScreen()
 
 
 }
-/**
-void StartScreen::render(sf::RenderWindow window)
+
+void StartScreen::render(sf::RenderWindow & window)
 {
-	window.draw(background);
+	//window.draw(background);
 
 }
-*/
+
 StartScreen::~StartScreen()
 {
 }

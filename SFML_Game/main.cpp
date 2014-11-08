@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "PlayerChar.h"
+#include "Game.h"
 #include "Platform.h"
 #include "Level.h"
 #include <vector>
@@ -9,15 +10,17 @@ int main()
 {
 	/**
 	This is what I want to replace all of the below with,
+
+	So all that is below should be sent to the game function or something
+
+	*/
+	/**
 	Game game;
 	game.run();
-	So all that is below should be sent to the game function or something
 	*/
-
-	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
+	//sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
 	// added 
 	PlayerChar playah(1);
-	std::vector < Platform > platforms;
 	sf::Image testImage;
 	testImage.loadFromFile("Levels\\level1.png");
 
@@ -28,11 +31,11 @@ int main()
 	platforms[0] = Platform(0,300);
 	platforms[1] = Platform(400, 400);
 	*/
-	platforms = testLevel.platforms;
 	
 	sf::Clock clock;
 	float lastTime = 0;
 	//window.setFramerateLimit(20);
+	/**
 	window.setFramerateLimit(60);
 	while (window.isOpen())
 	{
@@ -45,11 +48,11 @@ int main()
 
 		window.clear();
 
-		for (Platform plat : platforms)
+		for (Platform plat : testLevel.platforms)
 		{
 			window.draw(plat.getShape());
 		}
-		playah.update(platforms);	
+		playah.update(testLevel.platforms);	
 		window.draw(playah.getSprite());
 		window.display();
 		float currentTime = clock.restart().asSeconds();
@@ -59,6 +62,7 @@ int main()
 		
 
 	}
+	*/
 
 	return 0;
 }

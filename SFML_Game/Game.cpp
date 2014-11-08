@@ -4,18 +4,22 @@
 #include "StartScreen.h"
 #include "OptionScreen.h"
 
-Game::Game()
+Game::Game() 
+	: window_(sf::VideoMode(800, 600), "GAME")
 {
-	PlayerChar a(1);
-	player_1 = a;
+	player_1 = PlayerChar(1);
+	
 	screens.push_back(StartScreen());
 	screens.push_back(LevelScreen());
 	screens.push_back(OptionScreen());
 }
-
+/**
+	This function is the heart of the program,
+	it uses 'isGameRunning' 'onStartScreen' and 'gotoOptionScreen'
+	to decide which screens to display
+*/
 void Game::run()
 {
-	/**
 	//Start with main menu
 	//once hit start, go into running through level
 
@@ -23,10 +27,10 @@ void Game::run()
 	{
 		while (onStartScreen)
 		{
-			//screens[STARTSCREEN].render(window_);
-			//screens[STARTSCREEN].handleInput();
+			screens[STARTSCREEN].render(window_);
+			screens[STARTSCREEN].handleInput();
 			//show start screen
-			
+			/**
 			display start screen
 
 			click on start button ->
@@ -35,6 +39,8 @@ void Game::run()
 			click on option button ->
 			set onStartScreen = false
 			set gotoOptionScreen = true
+			*/
+
 			
 		}
 		while (!onStartScreen && !gotoOptionScreen)
@@ -46,17 +52,6 @@ void Game::run()
 			//render options menu
 		}
 	}
-	*/
-}
-void Game::addLevel(sf::Image LevelLayout)
-{
-	//roomList.push_back(Level(LevelLayout));
-}
-
-void Game::renderGame()
-{
-	//roomList[currentLevel].renderLevel();
-	//player_1.renderChar
 }
 
 void Game::handleInput()

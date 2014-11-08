@@ -8,7 +8,7 @@ class StartScreen : public Screen
 public:
 	StartScreen();
 	~StartScreen();
-	//void render(sf::RenderWindow window);
+	void render(sf::RenderWindow & window);
 	std::vector <sf::RectangleShape> buttons;
 };
 
