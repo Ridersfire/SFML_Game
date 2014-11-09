@@ -25,7 +25,7 @@ void LevelScreen::render(sf::RenderWindow & window)
 	//Rendering process
 }
 
-void LevelScreen::handleInput()
+void LevelScreen::handleInput(sf::RenderWindow & window)
 {
 	//Input Handling
 }

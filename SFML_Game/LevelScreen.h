@@ -11,6 +11,6 @@ public:
 	void addLevel();
 	int currentLevel = 1;
 	void render(sf::RenderWindow & window);
-	void handleInput();
+	void handleInput(sf::RenderWindow & window);
 };
 

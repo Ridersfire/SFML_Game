@@ -15,7 +15,7 @@ void OptionScreen::render(sf::RenderWindow & window)
 	//Rendering process
 }
 
-void OptionScreen::handleInput()
+void OptionScreen::handleInput(sf::RenderWindow & window)
 {
 	//Input Handling
 }

@@ -33,6 +33,7 @@ void Game::run()
 		if (onStartScreen)
 		{
 			startScreen.render(window_);
+			startScreen.handleInput(window_);
 			//show start screen
 			
 			/**
