@@ -11,8 +11,10 @@ Level::Level()
 	This initialization gives you a vector of platforms from the given picture
 	uses black squares as platform, red as spawn, green as exit(maybe)
 */
-Level::Level(sf::Image levelImage)
+Level::Level(std::string fileName)
 {
+	sf::Image levelImage;
+	levelImage.loadFromFile(fileName);
 	sf::Vector2u levelDim(levelImage.getSize());
 	//this is so that the given image scales to the game screen
 	double xRes = 800 / levelDim.x; 
@@ -53,6 +55,14 @@ Level::Level(sf::Image levelImage)
 	}
 }
 
+void Level::render(sf::RenderWindow * window)
+{
+	int max = platforms.size();
+	for (int i = 0; i < max; i++)
+	{
+		window->draw(platforms[i].getShape());
+	}
+}
 Level::~Level()
 {
 }

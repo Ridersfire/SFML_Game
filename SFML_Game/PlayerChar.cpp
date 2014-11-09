@@ -34,7 +34,6 @@ void PlayerChar::update(std::vector <Platform> platforms)
 	fall(platforms);
 	yPos += vSpeed;
 	xPos += hSpeed;
-	std::cout << falling << std::endl;
 	charSprite.setPosition(xPos, yPos);
 }
 
@@ -59,7 +58,6 @@ void PlayerChar::getMovement()
 	if (sf::Keyboard::isKeyPressed(KEY_JUMP) && !falling)
 	{
 		//makes char jump if he needs to/can jump
-		std::cout << "Jump" << std::endl;
 		vSpeed = -jumpSpeed;
 	}
 }
@@ -102,8 +100,11 @@ void PlayerChar::fall(std::vector <Platform> platforms)
 		}
 		else if ((yPos > plat_yLoc + plat_yLen && yPos + vSpeed < plat_yLoc + plat_yLen))
 		{
-			vSpeed = 0;
-			//yPos = plat_yLoc + plat_yLen;
+			if (xPos + xLen > plat_xLoc && xPos < plat_xLoc + plat_xLen)
+			{
+				vSpeed = 0;
+				yPos = plat_yLoc + plat_yLen;
+			}
 		}
 		//xPos + hSpeed < plat_xLoc + plat_xLen && xPos > plat_xLoc + plat_xLen && yPos + yLen <= plat_yLen + plat_yLoc && yPos + yLen > plat_yLoc
 		// xPos is where the left side of the character is

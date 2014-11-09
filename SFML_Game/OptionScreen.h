@@ -1,12 +1,15 @@
 #pragma once
+
 #include "Screen.h"
+#include "Game.h"
+
 class OptionScreen : public Screen
 {
 public:
 	OptionScreen();
 	~OptionScreen();
-	void render(sf::RenderWindow & window);
-	void handleInput(sf::RenderWindow & window);
+	void render(Game * game);
+	void handleInput(Game * game);
 
 };
 

@@ -1,3 +1,4 @@
+
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "Screen.h"
@@ -5,7 +6,6 @@
 #include "StartScreen.h"
 #include "OptionScreen.h"
 #include "PlayerChar.h"
-
 class Level;
 
 
@@ -24,6 +24,7 @@ public:
 	void run();
 	~Game();
 	sf::RenderWindow window_;
+	void startGame();
 
 private:
 
@@ -36,7 +37,7 @@ private:
 	bool gotoOptionScreen = false;
 	StartScreen startScreen;
 	LevelScreen levelScreen;
-	OptionScreen optionScreen;
+	//OptionScreen optionScreen;
 	
 };
 

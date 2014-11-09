@@ -13,12 +13,14 @@ class Level
 {
 public:
 	Level();
-	Level(sf::Image);
+	Level(std::string);
+	void render(sf::RenderWindow * window);
 	~Level();
 	int spawnLocX = 0;
 	int spawnLocY = 0;
 	std::vector <Platform> platforms;
 	sf::Color spawnSpot = sf::Color(255,0,0,255);
+
 	//std::vector <Enemy> enemy_List;
 
 

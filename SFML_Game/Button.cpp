@@ -15,6 +15,14 @@ sf::FloatRect Button::getBounds()
 {
 	return sprite_.getGlobalBounds();
 }
+void Button::toggleActive()
+{
+	enabled = !enabled;
+}
+bool Button::isActive()
+{
+	return enabled;
+}
 Button::~Button()
 {
 }

@@ -1,8 +1,5 @@
 #pragma once
 
-#include <SFML\Graphics.hpp>
-#include "SFML\Graphics\Rect.hpp"
-#include "Button.h"
 #include "Screen.h"
 
 class StartScreen : public Screen
@@ -10,8 +7,8 @@ class StartScreen : public Screen
 public:
 	StartScreen();
 	~StartScreen();
-	void render(sf::RenderWindow & window);
-	void handleInput(sf::RenderWindow & window);
+	void render(Game * game);
+	void handleInput(Game * game);
 	sf::FloatRect mouseBounds_;
 	std::map <std::string, Button> buttons;
 };

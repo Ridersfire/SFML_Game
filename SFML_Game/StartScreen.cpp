@@ -1,10 +1,10 @@
 #include "StartScreen.h"
+#include "Game.h"
 #include <iostream>
 
 StartScreen::StartScreen()
 {
 	//Sets up a set of rectangles used to hold the button coords
-	sf::RectangleShape start_button, options_button, exit_button;
 	buttons["exit"] = Button("startscreen\\exitSprite.png", sf::Vector2f(302.f, 420.f));
 	buttons["start"] = Button("StartScreen\\startSprite.png", sf::Vector2f(278.f, 258.f));
 	mouseBounds_.height = 1.f;
@@ -19,9 +19,9 @@ StartScreen::StartScreen()
 
 }
 
-void StartScreen::render(sf::RenderWindow & window)
+void StartScreen::render(Game * game)
 {
-	window.draw(background);
+	game->window_.draw(background);
 
 }
 
@@ -29,17 +29,22 @@ StartScreen::~StartScreen()
 {
 }
 
-void StartScreen::handleInput(sf::RenderWindow & window)
+void StartScreen::handleInput(Game * game)
 {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 	{
-		mouseBounds_.top = sf::Mouse::getPosition(window).y;
-		mouseBounds_.left = sf::Mouse::getPosition(window).x;
+		mouseBounds_.top = sf::Mouse::getPosition(game->window_).y;
+		mouseBounds_.left = sf::Mouse::getPosition(game->window_).x;
 		for (auto button : buttons)
 		{
 			if ((button.second).getBounds().intersects(mouseBounds_))
 			{
 				std::cout << "Clicked " << button.first << std::endl;
+				if (button.first == "exit") game->window_.close();
+				if (button.first == "start")
+				{
+					game->startGame();
+				}
 			}
 		}
 	}

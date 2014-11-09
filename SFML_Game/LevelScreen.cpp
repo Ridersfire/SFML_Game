@@ -1,8 +1,10 @@
 #include "LevelScreen.h"
-
+#include "Game.h"
+#include "Platform.h"
 
 LevelScreen::LevelScreen()
 {
+	roomList.push_back(Level("Levels\\Level1.png"));
 }
 
 
@@ -20,12 +22,15 @@ void LevelScreen::addLevel()
 	roomList.push_back(Level(LevelLayout));
 	*/
 }
-void LevelScreen::render(sf::RenderWindow & window)
+void LevelScreen::render(Game * game)
 {
 	//Rendering process
+	roomList[currentLevel - 1].render(&(game->window_));
+	game->window_.draw(game->player_1.getSprite());
 }
 
-void LevelScreen::handleInput(sf::RenderWindow & window)
+void LevelScreen::handleInput(Game * game)
 {
+	game->player_1.update(roomList[currentLevel - 1].platforms);
 	//Input Handling
 }

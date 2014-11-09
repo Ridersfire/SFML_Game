@@ -1,8 +1,6 @@
+
 #include "Game.h"
-#include "Level.h"
-#include "PlayerChar.h"
-#include "StartScreen.h"
-#include "OptionScreen.h"
+
 
 /**
 	Initializes Game with a renderwindow of 800x600 as well as
@@ -10,9 +8,8 @@
 */
 Game::Game()
 	: window_(sf::VideoMode(800, 600), "GAME"),
-	startScreen(), levelScreen(), optionScreen()
+	startScreen(), levelScreen(), player_1(1)//, optionScreen()
 {
-	player_1 = PlayerChar(1);
 }
 /**
 	This function is the heart of the program,
@@ -39,8 +36,8 @@ void Game::run()
 		//displays start screen
 		if (onStartScreen)
 		{
-			startScreen.render(window_);
-			startScreen.handleInput(window_);
+			startScreen.render(this);
+			startScreen.handleInput(this);
 			//show start screen
 			
 			/**
@@ -57,6 +54,8 @@ void Game::run()
 		//displays the game
 		else if (!gotoOptionScreen)
 		{
+			levelScreen.render(this);
+			levelScreen.handleInput(this);
 			//render the game levels
 		}
 		//displays the option screen
@@ -73,7 +72,11 @@ void Game::handleInput()
 {
 	
 }
-
+void Game::startGame()
+{
+	onStartScreen = false;
+	gotoOptionScreen = false;
+}
 Game::~Game()
 {
 }

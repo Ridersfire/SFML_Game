@@ -1,10 +1,10 @@
 #include <SFML/Graphics.hpp>
-#include "PlayerChar.h"
 #include "Game.h"
-#include "Platform.h"
-#include "Level.h"
 #include <vector>
 #include <iostream>
+
+
+
 
 int main()
 {
