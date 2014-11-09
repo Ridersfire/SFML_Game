@@ -12,8 +12,12 @@ class Level;
 class Game
 {
 public:
+	/**
+		The game class holds the player character, the render window,
+		and the (currently) 3 types of screens used in this game
+	*/
 	Game();
-	int currentLevel;
+	
 	PlayerChar player_1;
 	//moved addlevel to levelScreen
 	void renderGame();

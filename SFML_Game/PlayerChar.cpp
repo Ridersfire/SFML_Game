@@ -10,6 +10,7 @@ PlayerChar::PlayerChar()
 
 PlayerChar::PlayerChar(int charType)
 {
+	//loads 2 different sprites
 	if (charType == 1)
 	{
 		charTexture.loadFromFile("Sprites//Red_Char.png");
@@ -27,6 +28,8 @@ PlayerChar::~PlayerChar()
 
 void PlayerChar::update(std::vector <Platform> platforms)
 {
+	//updates the player, checks for user input, checks if he needs to fall,
+	// then moves character around as needed
 	getMovement();
 	fall(platforms);
 	yPos += vSpeed;
@@ -39,15 +42,15 @@ void PlayerChar::getMovement()
 {
 	if (sf::Keyboard::isKeyPressed(KEY_MOVELEFT))
 	{
-		hSpeed = -5;
+		hSpeed = -5; //moves char left
 	}
 	else if (sf::Keyboard::isKeyPressed(KEY_MOVERIGHT))
 	{
-		hSpeed = 5;
+		hSpeed = 5; //moves char right 
 	}
 	else
 	{
-		hSpeed = 0;
+		hSpeed = 0; //makes char not move
 	}
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 	{
@@ -55,6 +58,7 @@ void PlayerChar::getMovement()
 	}
 	if (sf::Keyboard::isKeyPressed(KEY_JUMP) && !falling)
 	{
+		//makes char jump if he needs to/can jump
 		std::cout << "Jump" << std::endl;
 		vSpeed = -jumpSpeed;
 	}
@@ -63,9 +67,7 @@ void PlayerChar::getMovement()
 void PlayerChar::fall(std::vector <Platform> platforms)
 {
 	falling = true;
-	//int i = 0; i < numPlatforms; i++
 	int platNum = platforms.size();
-	//for (Platform plat: platforms)
 	for (int i = 0; i < platNum; i++)
 	{
 		Platform plat = platforms[i];
@@ -82,7 +84,6 @@ void PlayerChar::fall(std::vector <Platform> platforms)
 		Bottom Right - xPos + xLen, yPos + yLen
 		*/
 
-		//((yPos + yLen > plat_yLoc && yPos + yLen >= plat_yLoc+yLen))
 
 
 		// yPos + yLen is the bottom of the player
@@ -140,6 +141,7 @@ void PlayerChar::fall(std::vector <Platform> platforms)
 	if (falling) vSpeed += fallSpeed;
 	else vSpeed = 0;
 }
+//simply returns the character sprite
 sf::Sprite PlayerChar::getSprite()
 {
 	return charSprite;

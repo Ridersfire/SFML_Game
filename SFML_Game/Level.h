@@ -1,7 +1,11 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 
-//using namespace sf;
+/**
+	This thing is where I keep the details of the level, for example
+	the platforms, the spawn location, and later the exit location, and
+	probably the enemies
+*/
 
 class Platform;
 

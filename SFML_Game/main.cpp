@@ -9,48 +9,15 @@
 int main()
 {
 	/**
-	This is what I want to replace all of the below with,
 
-	So all that is below should be sent to the game function or something
+	This makes and runs Game
+
+	-Just a note, I've not knowledgably specified between private and
+	public variables, just so you know
 
 	*/
 	
 	Game game;
 	game.run();
-	
-	//sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
-	// added
-
-	sf::Clock clock;
-	float lastTime = 0;
-	/**
-	window.setFramerateLimit(60);
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-
-		window.clear();
-
-		for (Platform plat : testLevel.platforms)
-		{
-			window.draw(plat.getShape());
-		}
-		playah.update(testLevel.platforms);	
-		window.draw(playah.getSprite());
-		window.display();
-		float currentTime = clock.restart().asSeconds();
-		float fps = 1.f / (currentTime);
-		lastTime = currentTime;
-		std::cout << fps << std::endl;
-		
-
-	}
-	*/
-
 	return 0;
 }

@@ -13,6 +13,11 @@ public:
 	void fall(std::vector <Platform>);
 	sf::Sprite getSprite();
 private:
+	/**
+		These guys just hold the specifics for the
+		position, velocity and other related movement stuff
+		as well as the texture and sprites
+	*/
 	float xPos = 0;
 	float yPos = 0;
 	int yLen = 32;

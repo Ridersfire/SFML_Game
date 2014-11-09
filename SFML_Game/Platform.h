@@ -1,6 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+/**
+	Just a freakin square
+*/
 class Platform
 {
 public:

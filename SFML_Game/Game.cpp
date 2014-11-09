@@ -4,6 +4,10 @@
 #include "StartScreen.h"
 #include "OptionScreen.h"
 
+/**
+	Initializes Game with a renderwindow of 800x600 as well as
+	the player
+*/
 Game::Game()
 	: window_(sf::VideoMode(800, 600), "GAME"),
 	startScreen(), levelScreen(), optionScreen()
@@ -25,11 +29,14 @@ void Game::run()
 		window_.clear();
 		sf::Event event;
 		window_.setFramerateLimit(60);
+
+		//allows user to hit x button and close window
 		while (window_.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
 				window_.close();
 		}
+		//displays start screen
 		if (onStartScreen)
 		{
 			startScreen.render(window_);
@@ -47,10 +54,12 @@ void Game::run()
 			set gotoOptionScreen = true
 			*/
 		}
+		//displays the game
 		else if (!gotoOptionScreen)
 		{
 			//render the game levels
 		}
+		//displays the option screen
 		else
 		{
 			//render options menu
