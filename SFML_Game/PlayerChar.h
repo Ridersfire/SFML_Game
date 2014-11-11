@@ -25,7 +25,7 @@ private:
 	double vSpeed = 0;
 	double hSpeed = 0;
 	double fallSpeed = .5;
-	float jumpSpeed = 20;
+	float jumpSpeed = 10;
 	bool falling = true;
 	sf::Sprite charSprite;
 	sf::Texture charTexture;

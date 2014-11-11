@@ -5,8 +5,8 @@
 StartScreen::StartScreen()
 {
 	//Sets up a set of rectangles used to hold the button coords
-	buttons["exit"] = Button("startscreen\\exitSprite.png", sf::Vector2f(302.f, 420.f));
-	buttons["start"] = Button("StartScreen\\startSprite.png", sf::Vector2f(278.f, 258.f));
+	buttons["exit"] = new Button("startscreen\\exitSprite", sf::Vector2f(302.f, 420.f));
+	buttons["start"] = new Button("StartScreen\\startSprite", sf::Vector2f(278.f, 258.f));
 	mouseBounds_.height = 1.f;
 	mouseBounds_.width = 1.f;
 	//options_button.setSize(sf::Vector2f(235.f, 48.f));
@@ -21,8 +21,11 @@ StartScreen::StartScreen()
 
 void StartScreen::render(Game * game)
 {
-	game->window_.draw(background);
-
+	//game->window_.draw(background);
+	for (auto button : buttons)
+	{
+		game->window_.draw(button.second->getSprite());
+	}
 }
 
 StartScreen::~StartScreen()
@@ -31,13 +34,13 @@ StartScreen::~StartScreen()
 
 void StartScreen::handleInput(Game * game)
 {
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	mouseBounds_.top = sf::Mouse::getPosition(game->window_).y;
+	mouseBounds_.left = sf::Mouse::getPosition(game->window_).x;
+	for (auto button : buttons)
 	{
-		mouseBounds_.top = sf::Mouse::getPosition(game->window_).y;
-		mouseBounds_.left = sf::Mouse::getPosition(game->window_).x;
-		for (auto button : buttons)
+		if ((button.second)->getBounds().intersects(mouseBounds_))
 		{
-			if ((button.second).getBounds().intersects(mouseBounds_))
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
 			{
 				std::cout << "Clicked " << button.first << std::endl;
 				if (button.first == "exit") game->window_.close();
@@ -46,7 +49,14 @@ void StartScreen::handleInput(Game * game)
 					game->startGame();
 				}
 			}
+			else
+			{
+				button.second->hoverOver(true);
+			}
+		}
+		else
+		{
+			button.second->hoverOver(false);
 		}
 	}
-
 }
