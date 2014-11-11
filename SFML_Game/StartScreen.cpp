@@ -7,6 +7,8 @@ StartScreen::StartScreen()
 	//Sets up a set of rectangles used to hold the button coords
 	buttons["exit"] = new Button("startscreen\\exitSprite", sf::Vector2f(302.f, 420.f));
 	buttons["start"] = new Button("StartScreen\\startSprite", sf::Vector2f(278.f, 258.f));
+	buttons["exit"]->centerOnWindow();
+	buttons["start"]->centerOnWindow();
 	mouseBounds_.height = 1.f;
 	mouseBounds_.width = 1.f;
 	//options_button.setSize(sf::Vector2f(235.f, 48.f));
