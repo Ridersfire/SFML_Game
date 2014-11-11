@@ -20,7 +20,9 @@ StartScreen::StartScreen()
 
 
 }
-
+/**
+Renders the current items in the start screen
+*/
 void StartScreen::render(Game * game)
 {
 	//game->window_.draw(background);
