@@ -18,25 +18,23 @@ public:
 	*/
 	Game();
 	
-	PlayerChar player_1;
+	PlayerChar* player_1;
 	//moved addlevel to levelScreen
 	void renderGame();
 	void run();
 	~Game();
 	sf::RenderWindow window_;
-	void startGame();
+	void startGame(int charSelect = 0);
+	void addScreen(Screen* newScreen);
+	void removeScreen();
+	bool isGameRunning;
+	bool mouseClicked = false;
+	bool mouseClick_Buffer = false;
 
 private:
 
 	void handleInput();	
-	const int STARTSCREEN = 0;
-	const int GAMESCREEN = 1;
-	const int OPTIONSCREEN = 2;
-	bool isGameRunning = true;
-	bool onStartScreen = true;
-	bool gotoOptionScreen = false;
-	StartScreen startScreen;
-	LevelScreen levelScreen;
+	std::vector <Screen*> screenz;
 	//OptionScreen optionScreen;
 	
 };

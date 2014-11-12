@@ -1,4 +1,5 @@
 #include "StartScreen.h"
+#include "CharScreen.h"
 #include "Game.h"
 #include <iostream>
 
@@ -21,14 +22,16 @@ StartScreen::StartScreen()
 
 }
 /**
-Renders the current items in the start screen
+Renders the current items in the start screen using a reference
+to a Game to draw on the window
 */
 void StartScreen::render(Game * game)
 {
-	//game->window_.draw(background);
+	game->window_.draw(background);
 	for (auto button : buttons)
 	{
-		game->window_.draw(button.second->getSprite());
+		if (button.second->isActive())
+			game->window_.draw(button.second->getSprite());
 	}
 }
 
@@ -36,31 +39,47 @@ StartScreen::~StartScreen()
 {
 }
 
+void StartScreen::setMain(bool state)
+{
+	buttons["exit"]->setIfActive(state);
+	buttons["start"]->setIfActive(state);
+
+}
+
+/**
+	Handles the mouse input for the start screen
+	Takes an input of game so that it can start the game and such
+*/
 void StartScreen::handleInput(Game * game)
 {
 	mouseBounds_.top = sf::Mouse::getPosition(game->window_).y;
 	mouseBounds_.left = sf::Mouse::getPosition(game->window_).x;
 	for (auto button : buttons)
 	{
-		if ((button.second)->getBounds().intersects(mouseBounds_))
+		if (button.second->isActive())
 		{
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			if ((button.second)->getBounds().intersects(mouseBounds_))
 			{
-				std::cout << "Clicked " << button.first << std::endl;
-				if (button.first == "exit") game->window_.close();
-				if (button.first == "start")
+				if (game->mouseClicked)
 				{
-					game->startGame();
+					std::cout << "Clicked " << button.first << std::endl;
+					if (button.first == "exit") game->window_.close();
+					if (button.first == "start")
+					{
+						game->startGame();
+						game->addScreen(CharScreen::Instance());
+						//game->startGame();
+					}
+				}
+				else
+				{
+					button.second->hoverOver(true);
 				}
 			}
 			else
 			{
-				button.second->hoverOver(true);
+				button.second->hoverOver(false);
 			}
-		}
-		else
-		{
-			button.second->hoverOver(false);
 		}
 	}
 }

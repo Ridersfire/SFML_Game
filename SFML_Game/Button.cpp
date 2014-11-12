@@ -48,9 +48,9 @@ sf::Sprite Button::getSprite()
 /**
 Changes whether or not the button is active
 */
-void Button::toggleActive()
+void Button::setIfActive(bool newSetting)
 {
-	enabled = !enabled;
+	enabled = newSetting;
 }
 /**
 returns if the button is active

@@ -9,6 +9,8 @@ public:
 	~StartScreen();
 	void render(Game * game);
 	void handleInput(Game * game);
+	void setMain(bool state);
+	void starCharSelect();
 	sf::FloatRect mouseBounds_;
 	std::map <std::string, Button*> buttons;
 };

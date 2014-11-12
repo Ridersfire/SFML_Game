@@ -7,9 +7,10 @@
 	the player
 */
 Game::Game()
-	: window_(sf::VideoMode(800, 600), "GAME"),
-	startScreen(), levelScreen(), player_1(1)//, optionScreen()
+	: window_(sf::VideoMode(800, 600), "GAME")
 {
+	screenz.push_back(new StartScreen());
+	isGameRunning = true;
 }
 /**
 	This function is the heart of the program,
@@ -18,64 +19,57 @@ Game::Game()
 */
 void Game::run()
 {
+	LevelScreen::Instance()->Init();
 	//Start with main menu
 	//once hit start, go into running through level
-
+	player_1 = new PlayerChar(1);
 	while (isGameRunning)
 	{
 		window_.clear();
 		sf::Event event;
 		window_.setFramerateLimit(60);
 
+		mouseClicked = false;
 		//allows user to hit x button and close window
+		bool isMouseClicked = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+		if (isMouseClicked && !mouseClick_Buffer)
+		{
+			mouseClicked = true;
+			mouseClick_Buffer = true;
+		}
+		else if (!sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			mouseClick_Buffer = false;
+		}
 		while (window_.pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
 				window_.close();
 		}
-		//displays start screen
-		if (onStartScreen)
-		{
-			startScreen.render(this);
-			startScreen.handleInput(this);
-			//show start screen
-			
-			/**
-			display start screen
+		screenz.back()->render(this);
+		screenz.back()->handleInput(this);
 
-			click on start button ->
-			set onStartScreen = false
-			set gotoOptionScreen = false
-			click on option button ->
-			set onStartScreen = false
-			set gotoOptionScreen = true
-			*/
-		}
-		//displays the game
-		else if (!gotoOptionScreen)
-		{
-			levelScreen.render(this);
-			levelScreen.handleInput(this);
-			//render the game levels
-		}
-		//displays the option screen
-		else
-		{
-			//render options menu
-		}
 		window_.display();
 
 	}
 }
 
-void Game::handleInput()
+void Game::addScreen(Screen* newScreen)
 {
-	
+	screenz.push_back(newScreen);
 }
-void Game::startGame()
+void Game::removeScreen()
 {
-	onStartScreen = false;
-	gotoOptionScreen = false;
+	screenz.pop_back();
+}
+/**
+begins game by changing loop to run the levelScreen
+also initializes player character given an input value charSelect
+default value is 0, or green character
+*/
+void Game::startGame(int charSelect)
+{
+	player_1 = new PlayerChar(charSelect);
 }
 Game::~Game()
 {

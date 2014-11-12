@@ -12,7 +12,7 @@ public:
 	sf::Sprite getSprite();
 	~Button();
 	bool isActive();
-	void toggleActive();
+	void setIfActive(bool newSetting);
 	bool enabled;
 	bool mouseOver = false;
 	sf::FloatRect getBounds();

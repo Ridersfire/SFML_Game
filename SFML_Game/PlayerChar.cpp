@@ -11,7 +11,7 @@ PlayerChar::PlayerChar()
 PlayerChar::PlayerChar(int charType)
 {
 	//loads 2 different sprites
-	if (charType == 1)
+	if (charType == 0)
 	{
 		charTexture.loadFromFile("Sprites//Red_Char.png");
 	}
